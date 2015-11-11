@@ -1,2 +1,2 @@
-# girlcodeapp
-Girl Code team project
+# nodestart
+A simple example Node.js project
