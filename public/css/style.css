@@ -22,7 +22,11 @@ h2 {
   color: hotpink;
   display: inline-block;
   background-color: #FF9900;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
   padding: 20px;
+  width: 150px;
+  margin: 10px;
 }
 .nav-bar {
   text-align: center;
