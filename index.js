@@ -15,6 +15,7 @@ app.use(bodyParser.json())
 var coolIdeas = [];
 var idea = {};
 idea.text = "try wearing a hat on cold days";
+idea.dt = new Date();
 coolIdeas.push(idea);
 
 //let a client GET the list of ideas
