@@ -28,6 +28,7 @@ app.post('/ideas', function (req, res) {
   //coolIdeas.push(req.body.idea); //save a new idea
   var idea = {};
   idea.text = req.body.idea;
+  idea.dt = new Date();
   coolIdeas.push(idea);
   res.send("Thanks for your great idea!");
 });
