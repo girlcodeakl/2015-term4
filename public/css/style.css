@@ -18,3 +18,8 @@ h2 {
   border-radius: 5px;
   text-align: center;
 }
+
+.navbar {
+  text-align: center;
+  color: pink;
+}
