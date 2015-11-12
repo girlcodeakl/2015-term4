@@ -18,8 +18,15 @@ h2 {
   border-radius: 5px;
   text-align: center;
 }
-
-.navbar {
-  text-align: center;
-  color: pink;
+.nav-bar a {
+  color: hotpink;
+  display: inline-block;
+  background-color: #FF9900;
+  padding: 20px;
 }
+.nav-bar {
+  text-align: center;
+}
+.nav-bar a:hover, .nav-bar a:active {
+    background-color: #FF0066;
+  }
