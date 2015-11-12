@@ -13,7 +13,9 @@ app.use(bodyParser.json())
 
 //make an empty list of ideas
 var coolIdeas = [];
-coolIdeas.push("try wearing a hat on cold days");
+var idea = {};
+idea.text = "try wearing a hat on cold days";
+coolIdeas.push(idea);
 
 //let a client GET the list of ideas
 app.get('/ideas', function (req, res) {
@@ -23,8 +25,11 @@ app.get('/ideas', function (req, res) {
 //let a client POST new ideas
 app.post('/ideas', function (req, res) {
   console.log(req.body.idea); //write it on the command prompt so we can see
-  coolIdeas.push(req.body.idea); //save a new idea
-  res.send("thanks for your idea");
+  //coolIdeas.push(req.body.idea); //save a new idea
+  var idea = {};
+  idea.text = req.body.idea;
+  coolIdeas.push(idea);
+  res.send("Thanks for your great idea!");
 });
 
 //listen for connections on port 3000
