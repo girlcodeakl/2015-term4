@@ -14,12 +14,14 @@
       <a href="post.html">Post something</a>
       <a href="index.html">Home</a>
     </div>
+    <div class="idea-box">
+    </div>
     <script>
 
 //Hello! This is the start of the JavaScript.
 
 var addIdea = function(idea) {
-  var ideaElement = $('<h2>' + idea + '</h2>');
+  var ideaElement = $('<h2>' + idea.text + " " + idea.dt + '</h2>');
   $(".idea-box").append(ideaElement);
 
 }

@@ -1,23 +1,32 @@
+{
+border: 2px solid black;
+}
 body {
   color: black;
+  text-align: center;
+  background-color: #FFE5B4;
+
 }
 .idea-box {
-  background-color: #FFF0A5;
-  padding: 20px;
+  background-color:white;
+  padding: 0px;
+  padding-left: 0;
+  padding-right: 0;
 }
 h1 {
   text-align: center;
-  color: #FFB03B;
+  color: black;
 }
 
 h2 {
-  color: #468966;
+  color: black;
   margin: 10px;
   padding: 10px;
-  border: 2px solid #FFB03B;
+  border: 2px solid black;
   border-radius: 5px;
   text-align: center;
 }
+
 .nav-bar a {
   color: hotpink;
   display: inline-block;
@@ -34,3 +43,7 @@ h2 {
 .nav-bar a:hover, .nav-bar a:active {
     background-color: #FF0066;
   }
+p {
+  border: 2px solid black;
+  padding: 10px
+}
