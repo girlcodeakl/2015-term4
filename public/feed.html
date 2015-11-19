@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <title>Idea Feed</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <h1 class="title">Idea Feed</h1>
+    <div class="nav-bar">
+      <a href="feed.html">Read the feed</a>
+      <a href="post.html">Post something</a>
+      <a href="index.html">Home</a>
+    </div>
     <div class="idea-box">
+    </div>
     <script>
+
 //Hello! This is the start of the JavaScript.
 
 var addIdea = function(idea) {
-  var ideaElement = $('<h2>' + idea + '</h2>');
+  var ideaElement = $('<h2>' + idea.text + " " + idea.dt + '</h2>');
   $(".idea-box").append(ideaElement);
 
 }
