@@ -4,14 +4,28 @@ border: 2px solid black;
 body {
   color: black;
   text-align: center;
-  background-color: #FFE5B4;
+  background-color: #E0FFFF;
 
 }
+.idea-box input {
+  border: 3px solid gray;
+  font-size: 20px;
+  height:150px;
+
+}
+.submit-button {
+height:50px;
+width:50px;
+font-size: 10px;
+}
 .idea-box {
-  background-color:white;
+  background-color:darkgray;
   padding: 0px;
   padding-left: 0;
   padding-right: 0;
+  width:450px;
+  height:200px;
+  margin-left: 130px;
 }
 h1 {
   text-align: center;
@@ -31,7 +45,7 @@ h2 {
   color: hotpink;
   display: inline-block;
   background-color: #FF9900;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'century gothic', sans-serif;
   font-size: 20px;
   padding: 20px;
   width: 150px;
