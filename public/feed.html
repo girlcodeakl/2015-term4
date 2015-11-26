@@ -23,7 +23,7 @@
 
 var addIdea = function(idea) {
 
-  var ideaElement = $('<h2>' + idea.text + " " + $.format.prettyDate(idea.dt) + '<a href="#" class="likeButton">Like</a>'+'</h2>');
+  var ideaElement = $('<h2>' + idea.text + " " + "<div class='time'>" + $.format.prettyDate(idea.dt) + "</div>" +'<a href="#" class="likeButton">Like</a>'+'</h2>');
   $(".idea-box").append(ideaElement);
   ideaElement.delegate(".likeButton", "click", function() {
       alert("You liked: " + idea.text + "!");
