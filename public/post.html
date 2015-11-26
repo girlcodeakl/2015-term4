@@ -5,12 +5,13 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
   <meta charset='utf-8'>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="fstylesheet" href="css/style.css">
 </head>
 <body>
 
   <form class="submitform" method="post" action="/ideas">
     <input  class="ideaInput" type="text" name="idea" value="idea goes here">
+    <input  class="imageInput" type="text" name="imageUrl" value="image url goes here">
     <input type="submit" value="Submit">
 
   <div class= "note"> </div>
@@ -25,13 +26,15 @@
   var myCoolFunction = function (e) {
     e.preventDefault();
    $(".note").text("Thanks! Your idea was submitted");
+   var data = {};
+   data.idea = $(".ideaInput").val();
+   data.image = $(".imageInput").val();
+ $.post( "/ideas" , data );
  }
 
   $(".submitform").on("submit", myCoolFunction);
 
-  var data = {};
-  data.idea = $(".ideaInput").val();
-$.post( "/ideas" , data );
+
 
   </script>
 </body>

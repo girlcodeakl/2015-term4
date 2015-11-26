@@ -1,39 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-    <meta charset="utf-8">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <title>Idea Feed</title>
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <h1 class="title">Idea Feed</h1>
-    <div class="nav-bar">
-      <a href="feed.html">Read the feed</a>
-      <a href="post.html">Post something</a>
-      <a href="index.html">Home</a>
-    </div>
-    <div class="idea-box">
-    </div>
-    <script>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js"></script>
+  <title>Idea Feed</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1 class="title">Idea Feed</h1>
+  <div class="nav-bar">
+    <a href="feed.html">Read the feed</a>
+    <a href="post.html">Post something</a>
+    <a href="index.html">Home</a>
+  </div>
+  <div class="idea-box">
+  </div>
+  <script>
 
-//Hello! This is the start of the JavaScript.
+  //Hello! This is the start of the JavaScript.
 
-var addIdea = function(idea) {
-  var ideaElement = $('<h2>' + idea.text + " " + idea.dt + '</h2>');
-  $(".idea-box").append(ideaElement);
+  var addIdea = function(idea) {
+    if (idea.image == "") {
+      idea.image = "http://img4.wikia.nocookie.net/__cb20120421142625/adventuretimewithfinnandjake/images/3/32/Science_Cat_chasing_Jake.png";
+    }
+    var ideaString ='<h2>' + idea.text + " "
+    ideaString += '<div class="time">' + $.format.prettyDate(idea.dt) + '</div>' + '</h2>'
+    ideaString += '<a href="#" class="likeButton">Like</a>'
+    ideaString += '<img src="'+ idea.image + '">'
+    var ideaElement = $(ideaString);
+    $(".idea-box").append(ideaElement);
 
-}
+    ideaElement.delegate(".likeButton", "click", function() {
+      alert("You liked: " + idea.text + "!");
+    });
+  }
 
-var createFeed = function(data) {
-  data.forEach(addIdea);
-}
+  var createFeed = function(data) {
+    data.forEach(addIdea);
+  }
 
-$.get("/ideas", createFeed);
+  $.get("/ideas", createFeed);
 
 
-//This is the end of the JavaScript.
-    </script>
-  </body>
+  //This is the end of the JavaScript.
+  </script>
+</body>
 </html>
