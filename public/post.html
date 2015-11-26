@@ -15,6 +15,7 @@
           <form method="post" action="/ideas" class="submitform">
               <input class="ideaInput" type="text" name="idea" placeholder="idea goes here">
               <input class="submit-button" type="submit" value="enter">
+              <input class="username" type="text" name="username" placeholder="Enter Username...">
           <div class= "note"> </div>
        </form>
       </div>
@@ -30,6 +31,7 @@
 
         var data = {};
         data.idea = $(".ideaInput").val();
+        data.username = $(".username").val();
       $.post( "/ideas" , data );
 
       </script>
