@@ -13,6 +13,7 @@ app.use(bodyParser.json())
 
 //make an empty list of ideas
 var coolIdeas = [];
+var counter = 1000;
 var idea = {};
 idea.text = "try wearing a hat on cold days";
 idea.dt = new Date();
@@ -23,6 +24,19 @@ app.get('/ideas', function (req, res) {
   res.send(coolIdeas);
 });
 
+//
+app.get('/idea', function (req, res) {
+   var searchId = req.query.id;
+   var searchedIdea = "";
+   console.log("Searching for post " + searchId);
+   for (i = 1000; i == counter; i ++){
+     if (i == searchId) {
+       searchedIdea = "tomato";
+     }
+   }
+   res.send(searchedIdea);
+});
+
 //let a client POST new ideas
 app.post('/ideas', function (req, res) {
   console.log(req.body.idea); //write it on the command prompt so we can see
@@ -30,7 +44,9 @@ app.post('/ideas', function (req, res) {
   var idea = {};
   idea.text = req.body.idea;
   idea.image = req.body.image;
-  idea.dt = new Date();
+  idea.dt = new Date
+  idea.id = counter;
+  counter = counter + 1;
   coolIdeas.push(idea);
   res.send("Thanks for your great idea!");
 });

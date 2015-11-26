@@ -26,9 +26,9 @@
       idea.image = "http://img4.wikia.nocookie.net/__cb20120421142625/adventuretimewithfinnandjake/images/3/32/Science_Cat_chasing_Jake.png";
     }
     var ideaString ='<h2>' + idea.text + " "
-    ideaString += '<div class="time">' + $.format.prettyDate(idea.dt) + '</div>' + '</h2>'
+    ideaString += '<div class="time">' + $.format.prettyDate(idea.dt) + '</div>'
     ideaString += '<a href="#" class="likeButton">Like</a>'
-    ideaString += '<img src="'+ idea.image + '">'
+    ideaString += '<img src="'+ idea.image + '">' + '</h2>'
     var ideaElement = $(ideaString);
     $(".idea-box").append(ideaElement);
 
