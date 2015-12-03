@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 
 //make an empty list of ideas
 var coolIdeas = []; // array of the counter
-var counter = 1000; // start of the counter
+var counter = 999; // start of the counter
 counter = counter + 1; // adds one to the counter variable
 var idea = {};
 idea.id = counter;
@@ -29,6 +29,11 @@ app.get('/ideas', function (req, res) {
 app.get('/idea', function (req, res) {
    var searchId = req.query.id;
    console.log("Searching for post " + searchId);
+   coolIdeas.forEach(function (idea) {
+       if (idea.id == searchId) {
+           res.send(idea);
+       }
+   });
 });
 
 //let a client POST new ideas
@@ -42,11 +47,7 @@ app.post('/ideas', function (req, res) {
   res.send("Thanks for your great idea!");
 });
 
-coolIdeas.forEach(function (idea) {
-    if (idea.id == searchId) {
-        res.send(idea);
-    }
-});
+
 
 //listen for connections on port 3000
 app.listen(process.env.PORT || 3000);
