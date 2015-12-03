@@ -36,14 +36,18 @@ app.get('/idea', function (req, res) {
    });
 });
 
+var counter = 999; // start of the counter
+
 //let a client POST new ideas
 app.post('/ideas', function (req, res) {
   console.log(req.body.idea);
   console.log(req.body.username);//write it on the command prompt so we can see
   //coolIdeas.push(req.body.idea); //save a new idea
   var idea = {};
-  var counter = 999; // start of the counter
+
   counter = counter + 1; // adds one to the counter variable
+  idea.id = counter;
+
   idea.text = req.body.idea;
   idea.dt = new Date();
   idea.username =  req.body.username;
