@@ -20,20 +20,27 @@
        </form>
       </div>
 
-      <script>
+  <script>
 
-        var myCoolFunction = function (e) {
-          e.preventDefault();
-         $(".note").text("Thanks! Your idea was submitted");
-       }
+  var myCoolFunction = function (e) {
+    e.preventDefault();
+    $(".note").text("Thanks! Your idea was submitted");
+    var data = {};
+    data.idea = $(".ideaInput").val();
+    $.post( "/ideas" , data );
+  }
 
-        $(".submitform").on("submit", myCoolFunction);
+  $(".submitform").on("submit", myCoolFunction);
 
+<<<<<<< HEAD
         var data = {};
         data.idea = $(".ideaInput").val();
       $.post( "/ideas" , data );
       data.username = $(".username").val();
+=======
+>>>>>>> master
 
-      </script>
-  </body>
+
+  </script>
+</body>
 </html>
