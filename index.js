@@ -17,7 +17,7 @@ var counter = 999; // start of the counter
 counter = counter + 1; // adds one to the counter variable
 var idea = {};
 idea.id = counter;
-idea.text = "try wearing a hat on cold days";
+idea.text = "A HAT WILL NO LONGER ASSIST YOU";
 idea.dt = new Date();
 coolIdeas.push(idea);
 
