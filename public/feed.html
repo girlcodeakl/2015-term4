@@ -9,13 +9,16 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <h1 class="title">Idea Feed</h1>
-    <div class="nav-bar">
+    <div class = "nav-bar">
       <a href="feed.html">Read the feed</a>
-      <a href="post.html">Post something</a>
       <a href="index.html">Home</a>
-    </div>
-    <div class="idea-box">
+    <div class = "idea-box">
+      <form method="post" action="/ideas" class="submitform">
+        <input class="ideaInput" type="text" name="idea" placeholder="idea goes here">
+        <input class="username" type="text" name= "username" placeholder="enter your username here">
+        <div class= "note"> </div>
+        <input class="submit-button" type="submit" value="enter">
+      </form>
     </div>
     <script>
 
@@ -36,7 +39,21 @@ var createFeed = function(data) {
 $.get("/ideas", createFeed);
 
 
-//This is the end of the JavaScript.
-    </script>
-  </body>
+//This is the end of the JavaScript
+
+
+  var myCoolFunction = function (e) {
+    e.preventDefault();
+    $(".note").text("Thanks! Your idea was submitted");
+    var data = {};
+    data.idea = $(".ideaInput").val();
+    data.username = $(".username").val();
+    $.post( "/ideas" , data );
+    data.username = $(".username").val();
+  }
+
+  $(".submitform").on("submit", myCoolFunction);
+
+  </script>
+</body>
 </html>
