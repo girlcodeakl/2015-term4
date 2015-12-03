@@ -27,19 +27,11 @@
     $(".note").text("Thanks! Your idea was submitted");
     var data = {};
     data.idea = $(".ideaInput").val();
+    data.username = $(".username").val();
     $.post( "/ideas" , data );
   }
 
   $(".submitform").on("submit", myCoolFunction);
-
-<<<<<<< HEAD
-        var data = {};
-        data.idea = $(".ideaInput").val();
-      $.post( "/ideas" , data );
-      data.username = $(".username").val();
-=======
->>>>>>> master
-
 
   </script>
 </body>
