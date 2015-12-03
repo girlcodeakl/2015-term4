@@ -29,6 +29,7 @@
     var data = {};
     data.idea = $(".ideaInput").val();
     $.post( "/ideas" , data );
+    data.username = $(".username").val();
   }
 
   $(".submitform").on("submit", myCoolFunction);
