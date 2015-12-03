@@ -26,6 +26,11 @@ app.get('/ideas', function (req, res) {
   res.send(coolIdeas);
 });
 
+app.get('/idea', function (req, res) {
+   var searchId = req.query.id;
+   console.log("Searching for post " + searchId);
+});
+
 //let a client POST new ideas
 app.post('/ideas', function (req, res) {
   console.log(req.body.idea); //write it on the command prompt so we can see
