@@ -14,9 +14,9 @@ app.use(bodyParser.json())
 //make an empty list of ideas
 var coolIdeas = []; // array of the counter
 var counter = 1000; // start of the counter
-idea.id = counter;
 counter = counter + 1; // adds one to the counter variable
 var idea = {};
+idea.id = counter;
 idea.text = "try wearing a hat on cold days";
 idea.dt = new Date();
 coolIdeas.push(idea);
