@@ -13,10 +13,10 @@ app.use(bodyParser.json())
 
 //make an empty list of ideas
 var coolIdeas = []; // array of the counter
-var counter = 999; // start of the counter
-counter = counter + 1; // adds one to the counter variable
+
 var idea = {};
-idea.id = counter;
+
+// idea.id = counter;
 idea.text = "A HAT WILL NO LONGER ASSIST YOU";
 idea.dt = new Date();
 coolIdeas.push(idea);
@@ -41,6 +41,8 @@ app.post('/ideas', function (req, res) {
   console.log(req.body.idea); //write it on the command prompt so we can see
   //coolIdeas.push(req.body.idea); //save a new idea
   var idea = {};
+  var counter = 999; // start of the counter
+  counter = counter + 1; // adds one to the counter variable
   idea.text = req.body.idea;
   idea.dt = new Date();
   coolIdeas.push(idea);
