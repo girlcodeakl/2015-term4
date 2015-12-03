@@ -4,7 +4,6 @@
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <meta charset="utf-8">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js"></script>
     <title>Idea Feed</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
@@ -22,8 +21,7 @@
 //Hello! This is the start of the JavaScript.
 
 var addIdea = function(idea) {
-
-  var ideaElement = $('<h2>' + idea.text + " " + "<div class='time'>" + $.format.prettyDate(idea.dt) + "</div>" +'<a href="#" class="likeButton">Like</a>'+'</h2>');
+  var ideaElement = $('<h2>' + idea.text + " " + idea.dt + idea.username +'<a href="#" class="likeButton">Like</a>'+'</h2>');
   $(".idea-box").append(ideaElement);
   ideaElement.delegate(".likeButton", "click", function() {
       alert("You liked: " + idea.text + "!");
@@ -34,7 +32,6 @@ var addIdea = function(idea) {
 var createFeed = function(data) {
   data.forEach(addIdea);
 }
-
 $.get("/ideas", createFeed);
 
 
