@@ -19,6 +19,7 @@ var idea = {};
 // idea.id = counter;
 idea.text = "A HAT WILL NO LONGER ASSIST YOU";
 idea.dt = new Date();
+idea.likes = 0;
 coolIdeas.push(idea);
 
 //let a client GET the list of ideas
@@ -50,9 +51,22 @@ app.post('/ideas', function (req, res) {
 
   idea.text = req.body.idea;
   idea.dt = new Date();
+  idea.likes = 0;
   idea.username =  req.body.username;
   coolIdeas.push(idea);
   res.send("Thanks for your great idea!");
+});
+
+app.post("/liked", function (req, res) {
+  coolIdeas.forEach(function (idea) {
+      if (idea.id == req.body.postId) {
+        idea.likes=idea.likes+1
+      }
+  });
+  console.log(req.body.postId);
+  console.log(idea)
+   //code goes here
+   res.send("thanks");
 });
 
 
