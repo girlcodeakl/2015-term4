@@ -18,19 +18,21 @@
         <input class="username" type="text" name= "username" placeholder="enter your username here">
         <div class= "note"> </div>
         <input class="submit-button" type="submit" value="enter">
+        <center><a class="refresh-button" href="#">Refresh</a></enter>
       </form>
+      <div class="posts">
+      </div>
     </div>
     <script>
 
 //Hello! This is the start of the JavaScript!
 
 var addIdea = function(idea) {
-  var ideaElement = $('<h2>' + idea.text + " " + "<div class='time'>" + $.format.prettyDate(idea.dt) + idea.username + "</div>" +'<a href="#" class="likeButton">Like</a>'+'</h2>');
-  $(".idea-box").append(ideaElement);
+  var ideaElement = $('<h2>' + idea.text + " " + "<div class='time'>" + $.format.prettyDate(idea.dt) + " by " + idea.username + "</div>" +'<a href="#" class="likeButton">Like</a>'+'</h2>');
+  $(".posts").append(ideaElement);
   ideaElement.delegate(".likeButton", "click", function() {
       alert("You liked: " + idea.text + "!");
   });
-
 }
 
 var createFeed = function(data) {
@@ -53,6 +55,14 @@ $.get("/ideas", createFeed);
   }
 
   $(".submitform").on("submit", myCoolFunction);
+
+  var refreshIdeas = function(data) {
+     $(".posts").empty();
+     $.get("/ideas", createFeed);
+  }
+  $(".refresh-button").on("click", refreshIdeas);
+  refreshIdeas();
+
 
   </script>
 </body>
