@@ -50,6 +50,7 @@ app.post('/ideas', function (req, res) {
 
   idea.text = req.body.idea;
   idea.dt = new Date();
+  idea.picture = req.body.picture
   idea.username =  req.body.username;
   coolIdeas.push(idea);
   res.send("Thanks for your great idea!");
