@@ -2,6 +2,7 @@
 var express = require('express')
 var app = express();
 var bodyParser = require('body-parser')
+var database = null;
 
 //If a client asks for a file,
 //look in the public folder. If it's there, give it to them.
@@ -32,6 +33,8 @@ app.post('/ideas', function (req, res) {
   console.log(req.body.username);//write it on the command prompt so we can see
   //coolIdeas.push(req.body.idea); //save a new idea
   var idea = {};
+  var dbPosts = database.collection('posts');
+dbPosts.insert(idea);
   idea.text = req.body.idea;
   idea.dt = new Date();
   idea.username =  req.body.username;
@@ -42,3 +45,20 @@ app.post('/ideas', function (req, res) {
 //listen for connections on port 3000
 app.listen(process.env.PORT || 3000);
 console.log("I am listening...");
+
+var mongodb = require('mongodb');
+var uri = 'mongodb://user:weak@ds054288.mongolab.com:54288/girlcode';
+
+mongodb.MongoClient.connect(uri, function(err, newdb) {
+  if(err) throw err;
+  console.log("yay we connected to the database");
+  database = newdb;
+  var dbPosts = database.collection('posts');
+  dbPosts.find(function (err, cursor) {
+    cursor.each(function (err, item) {
+      if (item != null) {
+        coolIdeas.push(item);
+      }
+    });
+  });
+});
