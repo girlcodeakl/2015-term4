@@ -20,7 +20,10 @@
         <input class="pictureInput" type="text" name="picture" placeholder="picture URL goes here">
         <div class= "note"> </div>
         <input class="submit-button" type="submit" value="Enter">
+        <center><a class="refresh-button" href="#">Refresh</a></enter>
       </form>
+      <div class="posts">
+      </div>
     </div>
     <script>
 
@@ -31,9 +34,7 @@ var addIdea = function(idea) {
   var ideaString = '<h2>' + idea.text + " " + "<div class='time'>" + $.format.prettyDate(idea.dt)+ "</div>"
   ideaString += "<img src="+idea.picture+">";
   ideaString += idea.username
-  ideaString += '<a href="#" class="likeButton">Like</a> (' + idea.likes  + " likes) "'</h2>';
-
-
+  ideaString += '<a href="#" class="likeButton">Like</a> (' + idea.likes  + " likes) "+ '</h2>';
   var ideaElement = $(ideaString);
 
   $(".idea-box").append(ideaElement);
@@ -42,7 +43,6 @@ var addIdea = function(idea) {
 data.postId = idea.id;
 $.post("/liked", data);
   });
-
 }
 
 var createFeed = function(data) {
@@ -65,6 +65,14 @@ $.get("/ideas", createFeed);
   }
 
   $(".submitform").on("submit", myCoolFunction);
+
+  var refreshIdeas = function(data) {
+     $(".posts").empty();
+     $.get("/ideas", createFeed);
+  }
+  $(".refresh-button").on("click", refreshIdeas);
+  refreshIdeas();
+
 
   </script>
 </body>
