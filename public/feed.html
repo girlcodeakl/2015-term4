@@ -34,11 +34,11 @@ var addIdea = function(idea) {
   if (idea.dt == undefined) idea.dt = new Date();
   var ideaString = '<h2>' + idea.text + " " + "<div class='time'>" + $.format.prettyDate(idea.dt)+ "</div>"
   ideaString += "<img src="+idea.picture+">";
-  ideaString += idea.username
+  ideaString += " by " + idea.username
   ideaString += '<a href="#" class="likeButton">Like</a> likes' + idea.likes + '</h2>';
   var ideaElement = $(ideaString);
 
-  $(".idea-box").append(ideaElement);
+  $(".posts").append(ideaElement);
   ideaElement.delegate(".likeButton", "click", function() {
     var data = {};
     data.postId = idea.id;
@@ -49,8 +49,6 @@ var addIdea = function(idea) {
 var createFeed = function(data) {
   data.forEach(addIdea);
 }
-$.get("/ideas", createFeed);
-
 
 //This is the end of the JavaScript
 
