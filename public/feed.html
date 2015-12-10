@@ -31,15 +31,16 @@ var addIdea = function(idea) {
   var ideaString = '<h2>' + idea.text + " " + "<div class='time'>" + $.format.prettyDate(idea.dt)+ "</div>"
   ideaString += "<img src="+idea.picture+">";
   ideaString += idea.username
-  ideaString += '<a href="#" class="likeButton">Like</a>'+'</h2>';
+  ideaString += '<a href="#" class="likeButton">Like</a> (' + idea.likes  + " likes) "'</h2>';
 
 
   var ideaElement = $(ideaString);
 
-
   $(".idea-box").append(ideaElement);
   ideaElement.delegate(".likeButton", "click", function() {
-      alert("You liked: " + idea.text + "!");
+  var data = {};
+data.postId = idea.id;
+$.post("/liked", data);
   });
 
 }
