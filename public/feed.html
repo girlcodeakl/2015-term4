@@ -15,6 +15,7 @@
     <div class = "idea-box">
       <form method="post" action="/ideas" class="submitform">
         <input class="ideaInput" type="text" name="idea" placeholder="idea goes here">
+        <input class="pictureInput" type="text" name="picture" placeholder="picture URL goes here">
         <input class="username" type="text" name= "username" placeholder="enter your username here">
         <div class= "note"> </div>
         <input class="submit-button" type="submit" value="enter">
@@ -52,13 +53,13 @@ $.get("/ideas", createFeed);
 
 
   var myCoolFunction = function (e) {
-    e.preventDefault();
-    $(".note").text("Thanks! Your idea was submitted");
     var data = {};
     data.idea = $(".ideaInput").val();
+    data.picture = $(".pictureInput").val();
     data.username = $(".username").val();
     $.post( "/ideas" , data );
-    data.username = $(".username").val();
+    e.preventDefault();
+    $(".note").text("Thanks! Your idea was submitted");
   }
 
   $(".submitform").on("submit", myCoolFunction);

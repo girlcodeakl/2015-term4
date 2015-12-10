@@ -29,13 +29,8 @@ background-color: #7E8AA2;
   padding-left: 50;
   padding-right: 0;
   width:450px;
-<<<<<<< HEAD
-  margin-left: 130px;
-=======
-  height:250px;
   margin-left:400px;
->>>>>>> master
-}
+ }
 h1 {
   text-align: center;
   color: black;
@@ -75,16 +70,10 @@ p {
 color:purple;
 
 }
-<<<<<<< HEAD
+
 img {
   width:100%
-
-
-
-
-
-=======
+}
 .time {
   color: #263248;
->>>>>>> master
 }
