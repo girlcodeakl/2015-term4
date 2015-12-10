@@ -24,7 +24,6 @@ font-size: 10px;
   padding-left: 0;
   padding-right: 0;
   width:450px;
-  height:200px;
   margin-left: 130px;
 }
 h1 {
@@ -64,5 +63,13 @@ p {
 }
 .signup {
 color:purple;
+
+}
+img {
+  width:100%
+
+
+
+
 
 }

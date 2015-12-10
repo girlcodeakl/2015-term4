@@ -21,7 +21,11 @@
 //Hello! This is the start of the JavaScript.
 
 var addIdea = function(idea) {
-  var ideaElement = $('<h2>' + idea.text + " " + idea.dt + '</h2>');
+  var ideaString = '<h2>' + idea.text + " " + idea.dt;
+  ideaString += "<img src="+idea.picture+">";
+  ideaString += '</h2>';
+  var ideaElement = $(ideaString);
+
   $(".idea-box").append(ideaElement);
 
 }
