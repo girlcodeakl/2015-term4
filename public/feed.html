@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <h1>Feed page</h1>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <meta charset="utf-8">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -15,6 +16,7 @@
     <div class = "idea-box">
       <form method="post" action="/ideas" class="submitform">
         <input class="ideaInput" type="text" name="idea" placeholder="idea goes here">
+        <input class="pictureInput" type="text" name="picture" placeholder="picture URL goes here">
         <input class="username" type="text" name= "username" placeholder="enter your username here">
         <div class= "note"> </div>
         <input class="submit-button" type="submit" value="enter">
@@ -25,7 +27,15 @@
 //Hello! This is the start of the JavaScript!
 
 var addIdea = function(idea) {
-  var ideaElement = $('<h2>' + idea.text + " " + "<div class='time'>" + $.format.prettyDate(idea.dt) + idea.username + " likes " + idea.likes  + " " + "</div>" +'<a href="#" class="likeButton">Like</a>'+'</h2>');
+
+  var ideaString = '<h2>' + idea.text + " " + "<div class='time'>" + $.format.prettyDate(idea.dt)+ "</div>"
+  ideaString += "<img src="+idea.picture+">";
+  ideaString += idea.username
+  ideaString += '<a href="#" class="likeButton">Like</a> (' + idea.likes  + " likes) "'</h2>';
+
+
+  var ideaElement = $(ideaString);
+
   $(".idea-box").append(ideaElement);
   ideaElement.delegate(".likeButton", "click", function() {
   var data = {};
@@ -45,13 +55,13 @@ $.get("/ideas", createFeed);
 
 
   var myCoolFunction = function (e) {
-    e.preventDefault();
-    $(".note").text("Thanks! Your idea was submitted");
     var data = {};
     data.idea = $(".ideaInput").val();
+    data.picture = $(".pictureInput").val();
     data.username = $(".username").val();
     $.post( "/ideas" , data );
-    data.username = $(".username").val();
+    e.preventDefault();
+    $(".note").text("Thanks! Your idea was submitted");
   }
 
   $(".submitform").on("submit", myCoolFunction);
