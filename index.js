@@ -14,11 +14,11 @@ app.use(bodyParser.json())
 
 //make an empty list of ideas
 var coolIdeas = []; // array of the counter
-var counter = 1000; // start of the counter
-counter = counter + 1; // adds one to the counter variable
+
 var idea = {};
-idea.id = counter;
-idea.text = "try wearing a hat on cold days";
+
+// idea.id = counter;
+idea.text = "A HAT WILL NO LONGER ASSIST YOU";
 idea.dt = new Date();
 coolIdeas.push(idea);
 
@@ -27,20 +27,37 @@ app.get('/ideas', function (req, res) {
   res.send(coolIdeas);
 });
 
+app.get('/idea', function (req, res) {
+   var searchId = req.query.id;
+   console.log("Searching for post " + searchId);
+   coolIdeas.forEach(function (idea) {
+       if (idea.id == searchId) {
+           res.send(idea);
+       }
+   });
+});
+
+var counter = 999; // start of the counter
+
 //let a client POST new ideas
 app.post('/ideas', function (req, res) {
   console.log(req.body.idea);
   console.log(req.body.username);//write it on the command prompt so we can see
   //coolIdeas.push(req.body.idea); //save a new idea
   var idea = {};
-  var dbPosts = database.collection('posts');
-dbPosts.insert(idea);
+  counter = counter + 1; // adds one to the counter variable
+  idea.id = counter;
   idea.text = req.body.idea;
   idea.dt = new Date();
+  idea.picture = req.body.picture
   idea.username =  req.body.username;
   coolIdeas.push(idea);
+  var dbPosts = database.collection('posts');
+  dbPosts.insert(idea);
   res.send("Thanks for your great idea!");
 });
+
+
 
 //listen for connections on port 3000
 app.listen(process.env.PORT || 3000);

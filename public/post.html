@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <meta charset='utf-8'>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div class = "nav-bar">
-    <a href="feed.html">Read the feed</a>
-    <a href="post.html">Post something</a>
-    <a href="index.html">Home</a>
-  </div>
-  <div class = "idea-box">
-    <form method="post" action="/ideas" class="submitform">
-      <input class="ideaInput" type="text" name="idea" placeholder="idea goes here">
-      <input class="username" type="text" name= "username" placeholder="enter your username here">
-      <div class= "note"> </div>
-      <input class="submit-button" type="submit" value="enter">
-    </form>
-  </div>
-  <script>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+          <div class = "nav-bar">
+          <a href="feed.html">Read the feed</a>
+          <a href="post.html">Post something</a>
+          <a href="index.html">Home</a>
+        </div>
+          <div class = "idea-box">
+          <form method="post" action="/ideas" class="submitform">
+              <input class="ideaInput" type="text" name="idea" placeholder="idea goes here">
+              <input class="pictureInput" type="text" name="picture" placeholder="picture URL goes here">
+              <input class="submit-button" type="submit" value="enter">
 
-  var myCoolFunction = function (e) {
-    e.preventDefault();
-    $(".note").text("Thanks! Your idea was submitted");
-    var data = {};
-    data.idea = $(".ideaInput").val();
-    data.username = $(".username").val();
-    $.post( "/ideas" , data );
-    data.username = $(".username").val();
-  }
+          <div class= "note"> </div>
+       </form>
+      </div>
 
-  $(".submitform").on("submit", myCoolFunction);
+      <script>
 
-  </script>
-</body>
+        var myCoolFunction = function (e) {
+          var data = {};
+          data.idea = $(".ideaInput").val();
+          data.picture = $(".pictureInput").val();
+        $.post( "/ideas" , data );
+          e.preventDefault();
+         $(".note").text("Thanks! Your idea was submitted");
+       }
+
+        $(".submitform").on("submit", myCoolFunction);
+
+
+      </script>
+  </body>
 </html>

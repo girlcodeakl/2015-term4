@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <h1>Feed page</h1>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <meta charset="utf-8">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -9,20 +10,33 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <h1 class="title">Idea Feed</h1>
-    <div class="nav-bar">
+    <div class = "nav-bar">
       <a href="feed.html">Read the feed</a>
-      <a href="post.html">Post something</a>
       <a href="index.html">Home</a>
-    </div>
-    <div class="idea-box">
+    <div class = "idea-box">
+      <form method="post" action="/ideas" class="submitform">
+        <input class="ideaInput" type="text" name="idea" placeholder="idea goes here">
+        <input class="pictureInput" type="text" name="picture" placeholder="picture URL goes here">
+        <input class="username" type="text" name= "username" placeholder="enter your username here">
+        <div class= "note"> </div>
+        <input class="submit-button" type="submit" value="enter">
+      </form>
     </div>
     <script>
 
 //Hello! This is the start of the JavaScript!
 
 var addIdea = function(idea) {
-  var ideaElement = $('<h2>' + idea.text + " " + "<div class='time'>" + $.format.prettyDate(idea.dt) + idea.username + "</div>" +'<a href="#" class="likeButton">Like</a>'+'</h2>');
+
+  var ideaString = '<h2>' + idea.text + " " + "<div class='time'>" + $.format.prettyDate(idea.dt)+ "</div>"
+  ideaString += "<img src="+idea.picture+">";
+  ideaString += idea.username
+  ideaString += '<a href="#" class="likeButton">Like</a>'+'</h2>';
+
+
+  var ideaElement = $(ideaString);
+
+
   $(".idea-box").append(ideaElement);
   ideaElement.delegate(".likeButton", "click", function() {
       alert("You liked: " + idea.text + "!");
@@ -36,7 +50,21 @@ var createFeed = function(data) {
 $.get("/ideas", createFeed);
 
 
-//This is the end of the JavaScript.
-    </script>
-  </body>
+//This is the end of the JavaScript
+
+
+  var myCoolFunction = function (e) {
+    var data = {};
+    data.idea = $(".ideaInput").val();
+    data.picture = $(".pictureInput").val();
+    data.username = $(".username").val();
+    $.post( "/ideas" , data );
+    e.preventDefault();
+    $(".note").text("Thanks! Your idea was submitted");
+  }
+
+  $(".submitform").on("submit", myCoolFunction);
+
+  </script>
+</body>
 </html>
