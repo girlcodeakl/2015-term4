@@ -2,29 +2,39 @@
 border: 2px solid black;
 }
 body {
-  color: black;
+  color: #FFFFFF;
   text-align: center;
-  background-color: #E0FFFF;
+  background-color: #7E8AA2;
 
 }
 .idea-box input {
-  border: 3px solid gray;
+  border: 3px solid #FF9800;
   font-size: 20px;
   height:150px;
-
+  margin-top: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
-.submit-button {
-height:50px;
-width:50px;
-font-size: 10px;
+.idea-box .submit-button {
+height:30px;
+width:80px;
+font-size: 15px;
+color: #263248;
+
+background-color: #7E8AA2;
 }
 .idea-box {
-  background-color:darkgray;
+  background-color:#263248;
   padding: 0px;
-  padding-left: 0;
+  padding-left: 50;
   padding-right: 0;
   width:450px;
+<<<<<<< HEAD
   margin-left: 130px;
+=======
+  height:250px;
+  margin-left:400px;
+>>>>>>> master
 }
 h1 {
   text-align: center;
@@ -42,9 +52,9 @@ h2 {
 
 
 .nav-bar a {
-  color: hotpink;
+  color: #263248;
   display: inline-block;
-  background-color: #FF9900;
+  background-color: #FF9800;
   font-family: 'century gothic', sans-serif;
   font-size: 20px;
   padding: 20px;
@@ -55,7 +65,7 @@ h2 {
   text-align: center;
 }
 .nav-bar a:hover, .nav-bar a:active {
-    background-color: #FF0066;
+    background-color: #FFFFFF;
   }
 p {
   border: 2px solid black;
@@ -65,6 +75,7 @@ p {
 color:purple;
 
 }
+<<<<<<< HEAD
 img {
   width:100%
 
@@ -72,4 +83,8 @@ img {
 
 
 
+=======
+.time {
+  color: #263248;
+>>>>>>> master
 }
